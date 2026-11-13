@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fax cover sheet</title>
+<style>
+  @page { size: letter; margin: 0.75in; }
+  body { font-family: Arial, Helvetica, sans-serif; color: #111; max-width: 7in; margin: 0 auto; }
+  h1 { font-size: 48px; letter-spacing: 6px; margin: 0 0 12px; border-bottom: 4px solid #111; }
+  table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+  td { padding: 8px 6px; border-bottom: 1px solid #999; vertical-align: top; }
+  td.l { width: 22%; font-weight: bold; }
+  [contenteditable] { min-height: 1.2em; outline: none; }
+  [contenteditable]:empty::before { content: attr(data-hint); color: #aaa; }
+  .boxes { margin: 18px 0; display: flex; flex-wrap: wrap; gap: 18px; }
+  .boxes label { white-space: nowrap; }
+  .msg { border: 1px solid #999; min-height: 2.5in; padding: 10px; margin-top: 8px; }
+  .note { font-size: 11px; color: #444; margin-top: 18px; }
+  .noprint { margin: 16px 0; font-size: 13px; color: #555; }
+  @media print { .noprint { display: none; } [contenteditable]:empty::before { content: ""; } }
+</style>
+</head>
+<body>
+<div class="noprint">Click any field to type. Then press Ctrl+P (Cmd+P on Mac) and print, or choose "Save as PDF". This file works offline and sends nothing anywhere.</div>
+<h1>FAX</h1>
+<table>
+  <tr><td class="l">Date</td><td contenteditable data-hint="MM/DD/YYYY"></td><td class="l">Pages</td><td contenteditable data-hint="incl. this cover"></td></tr>
+  <tr><td class="l">To</td><td contenteditable data-hint="Recipient name"></td><td class="l">From</td><td contenteditable data-hint="Your name"></td></tr>
+  <tr><td class="l">Company</td><td contenteditable data-hint="Office or department"></td><td class="l">Company</td><td contenteditable data-hint="Optional"></td></tr>
+  <tr><td class="l">Fax</td><td contenteditable data-hint="Recipient fax number"></td><td class="l">Fax</td><td contenteditable data-hint="Optional"></td></tr>
+  <tr><td class="l">Phone</td><td contenteditable data-hint="Recipient phone"></td><td class="l">Phone</td><td contenteditable data-hint="Your phone"></td></tr>
+  <tr><td class="l">Re</td><td colspan="3" contenteditable data-hint="Subject, case or account number"></td></tr>
+</table>
+<div class="boxes">
+  <label><input type="checkbox"> Urgent</label>
+  <label><input type="checkbox"> For review</label>
+  <label><input type="checkbox"> Please reply</label>
+  <label><input type="checkbox"> Please comment</label>
+  <label><input type="checkbox"> Confidential</label>
+</div>
+<strong>Message</strong>
+<div class="msg" contenteditable data-hint="Short note for the person receiving this fax"></div>
+<p class="note">This fax may contain confidential information intended only for the recipient named above. If you received it by mistake, please notify the sender and destroy it.</p>
+</body>
+</html>
